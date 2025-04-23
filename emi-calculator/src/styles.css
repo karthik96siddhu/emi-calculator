@@ -7,3 +7,11 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+.mat-slider.mat-accent .mat-slider-track-fill, .mat-slider.mat-accent .mat-slider-thumb, .mat-slider.mat-accent .mat-slider-thumb-label {
+    background-color: mediumblue;
+}
+
+.color-grey {
+    color: #7b7d8b
+  }
+

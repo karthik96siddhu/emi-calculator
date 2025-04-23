@@ -20,13 +20,14 @@ export class HomeComponent implements OnInit {
         data: [0, 0],
         backgroundColor: ['#3b82f6', '#facc15'],
         hoverBackgroundColor: ['#2563eb', '#eab308'],
-        borderWidth: 1
+        borderWidth: 1,
       }
     ]
   };
   
   doughnutChartOptions: ChartConfiguration<'doughnut'>['options'] = {
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
       legend: {
         position: 'top',
@@ -68,28 +69,10 @@ export class HomeComponent implements OnInit {
     this.calculateEMI(this.loanForm.value);
   }
 
-  principalAmountChange(event: any) {
-    this.loanForm.patchValue({
-      principal: event.value
-    })
-    // this.calculateEMI(this.loanForm.value);
-    // this.doughnutChartDatasets[0].data[1] = this.calculateInterest(event.value, this.loanForm.get('interest')?.value, this.loanForm.get('tenure')?.value);
-  }
 
-  interestRateChange(event: any) {
-    this.loanForm.patchValue({
-      interest: event.value
-    })
-    // this.calculateEMI(this.loanForm.value);
-    // this.doughnutChartDatasets[0].data[1] = this.calculateInterest(this.loanForm.get('principal')?.value, event.value, this.loanForm.get('tenure')?.value);
-  }
-
-  tenureChange(event: any) {
-    this.loanForm.patchValue({
-      tenure: event.value
-    })
-    // this.calculateEMI(this.loanForm.value);
-    // this.doughnutChartDatasets[0].data[1] = this.calculateInterest(this.loanForm.get('principal')?.value, this.loanForm.get('interest')?.value, event.value);
+  onSliderChange(controlName: string, event: any) {
+    const newValue = event.value;
+    this.loanForm.get(controlName)?.setValue(newValue);
   }
 
   calculateEMI(values: any) {
